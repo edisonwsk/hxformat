@@ -1,0 +1,12 @@
+-cp lib
+-swf9 studio.swf
+-swf-header 800:600:100:FFFFFF
+--flash-strict
+-main Studio
+-lib hscript
+-lib format
+-swf-version 11
+-D hscriptPos
+--next
+-js studio.js
+-main Js

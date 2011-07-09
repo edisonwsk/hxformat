@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>HxSL Studio</title>
+	<script type="text/javascript" src="studio.js"></script>
+	<style>
+	body {
+		background-color : white;
+		font-family : Verdana;
+		font-size : 12px;
+	}
+	table.design {
+		margin : auto;
+	}
+	table, tr, td {
+		margin : 0px;
+		padding : 0px;
+	}
+	td.left, td.right {
+		width : 450px;
+		vertical-align : top;
+		padding : 5px;
+	}
+	.tab {
+		border : 1px solid #666;
+		background-color : #eee;
+		padding : 10px;
+		height : 410px;
+		overflow : auto;
+	}
+	ul.tabs {
+		margin : 0px;
+		padding : 0px;
+		list-style-type : none;
+	}
+	ul.tabs li {
+		margin : 0px;
+		padding : 0px;
+		display : inline;
+	}
+	ul.tabs li a {
+		display : inline-block;
+		width : 50px;
+		text-decoration : none;
+		text-align : center;
+		border : 1px solid #666;
+		border-bottom : none;
+		background-color : #aaa;
+		color : white;
+		font-size : 12px;
+		padding : 3px 5px;
+		font-variant : small-caps;
+		font-weight : bold;
+	}
+	ul.tabs li a:hover {
+		background-color : #ccc;
+	}
+	ul.tabs li.active a {
+		background-color : #ccc;
+	}
+	#flash {
+		width : 450px;
+		height : 450px;
+		border : 1px solid #666;
+	}
+	#error {
+		color : red;
+		border : 1px solid red;
+		background-color : #fee;
+		padding : 5px;
+		margin : 5px;
+		cursor : pointer;
+	}
+	textarea {
+		width : 420px;
+		height : 396px;
+		padding : 3px;
+		overflow : auto;
+		border : 1px solid #666;
+		background-color : white;
+	}
+	#agal_vertex, #agal_fragment {
+		height : 180px;
+	}
+	ul#warnings {
+		list-style-type : none;
+		padding : 0px;
+		margin : 0px;
+	}
+	ul#warnings li {
+		margin-top : 3px;
+	}
+	#warnings a {
+		text-decoration : none;
+		color : #FF9000;
+		font-weight : bold;
+	}
+	</style>
+</head>
+<body>
+	<table class="design">
+	<tr>
+		<td class="left">
+			<ul class="tabs">
+				<li id="l_hxsl"><a href="#" onclick="_.setTab('hxsl'); return false">HxSL</a></li>
+				<li id="l_agal"><a href="#" onclick="_.setTab('agal'); return false">AGAL</a></li>
+				<li id="l_help"><a href="#" onclick="_.setTab('help'); return false">Help</a></li>
+			</ul>
+			<div id="t_hxsl" class="tab">
+				<textarea id="hxsl"></textarea>
+			</div>
+			<div id="t_agal" class="tab">
+				Vertex Shader :
+				<textarea id="agal_vertex" readonly="1"></textarea>
+				Fragment Shader :
+				<textarea id="agal_fragment" readonly="1"></textarea>
+			</div>
+			<div id="t_help" class="tab">
+				<p>
+				HxSL Studio 1.0 - (c)2011 Nicolas Cannasse
+				</p>
+				<p>
+					You can read the <a href="http://haxe.org/manual/hxsl" target="_blank">HxSL Manual</a> for the complete HxSL reference.
+				</p>
+			</div>
+			<div id="error">
+			</div>
+			<ul id="warnings">
+			</ul>
+		</td>
+		<td class="right">
+			<div id="flash">Loading...</div>
+		</td>
+	</tr>
+	</table>
+</body>
+</html>
