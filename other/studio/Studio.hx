@@ -37,7 +37,6 @@ class Studio {
 		mc.addEventListener(flash.events.Event.ENTER_FRAME, update);
 		
 		stage = mc.stage.stage3Ds[0];
-		stage.viewPort = new flash.geom.Rectangle(0,0,mc.stage.stageWidth,mc.stage.stageHeight);
 		stage.addEventListener(flash.events.Event.CONTEXT3D_CREATE, onReady);
 		stage.requestContext3D();
 	}
@@ -45,8 +44,9 @@ class Studio {
 	function onReady(_) {
 		c = stage.context3D;
 		c.enableErrorChecking = true;
-		var w = Std.int(stage.viewPort.width);
-		var h = Std.int(stage.viewPort.height);
+		var st = mc.stage;
+		var w = st.stageWidth;
+		var h = st.stageHeight;
 		c.configureBackBuffer( w, h, 0, true );
 		
 		camera = new Camera();
@@ -74,12 +74,6 @@ class Studio {
 	
 	function buildConstants( code : format.hxsl.Data.Code ) {
 		var tbl = new flash.Vector<Float>();
-		for( c in code.consts ) {
-			for( f in c )
-				tbl.push(Std.parseFloat(f));
-			for( i in c.length...4 )
-				tbl.push(0.);
-		}
 		var tindex = 0;
 		for( a in code.args.concat(code.tex) ) {
 			var v = vars.get(a.name);
@@ -99,6 +93,12 @@ class Studio {
 			case VTexture(t):
 				c.setTextureAt(tindex++, t);
 			}
+		}
+		for( c in code.consts ) {
+			for( f in c )
+				tbl.push(Std.parseFloat(f));
+			for( i in c.length...4 )
+				tbl.push(0.);
 		}
 		return tbl;
 	}
