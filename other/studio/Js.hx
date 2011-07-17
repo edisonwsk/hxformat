@@ -80,7 +80,7 @@ class Js {
 		check.run = function() {
 			check.stop();
 			if( me.hxsl.value == "" )
-				me.setError("HxSL Studio requires Flash11 'Incubator' Player, please download it from http://labs.adobe.com");
+				me.setError("HxSL Studio requires Flash 11 Beta Player, please download it from http://labs.adobe.com");
 		};
 		
 		// load SWF
